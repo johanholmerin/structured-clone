@@ -1,6 +1,6 @@
 # Structured clone
 
-A spec-compliant Javascript implementation of the structured clone algorithm.
+A Javascript implementation of the structured clone algorithm.
 Written in ES6, uses `Map` and `Array.from`.
 
 No external dependencies.
