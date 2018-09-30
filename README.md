@@ -1,9 +1,14 @@
 # Structured clone
 
 A Javascript implementation of the structured clone algorithm.
-Written in ES6, uses `Map` and `Array.from`.
 
 No external dependencies.
+
+## Install
+
+```sh
+ yarn add git+https://github.com/johanholmerin/structured-clone#semver:^1.0.0
+```
 
 ## Usage
 
