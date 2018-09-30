@@ -65,21 +65,16 @@ function cloneObject(obj, set) {
     );
   } else if (SUPPORTS_BLOB && obj instanceof Blob) {
     set(obj.slice(0, obj.size, obj.type));
-  } else if (SUPPORTS_FILELIST && obj instanceof FileList) {
-    if (SUPPORTS_DATATRANSFER) {
-      const dataTransfer = new DataTransfer();
-      for (const file of obj) {
-        dataTransfer.items.add(clone(file));
-      }
-      set(dataTransfer.files);
-    } else {
-      // Fall back to a normal array if DataTransfer is not supported
-      const newObj = [];
-      set(newObj);
-      for (const file of obj) {
-        newObj.push(clone(file));
-      }
+  } else if (
+    SUPPORTS_FILELIST &&
+    SUPPORTS_DATATRANSFER &&
+    obj instanceof FileList
+  ) {
+    const dataTransfer = new DataTransfer();
+    for (const file of obj) {
+      dataTransfer.items.add(clone(file));
     }
+    set(dataTransfer.files);
   } else if (SUPPORTS_ARRAYBUFFER && obj instanceof ArrayBuffer) {
     set(obj.slice(0));
   } else if (SUPPORTS_DATAVIEW && obj instanceof DataView) {

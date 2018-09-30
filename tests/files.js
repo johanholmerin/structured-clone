@@ -34,7 +34,6 @@ describe("files and blobs", function() {
     );
   });
 
-  // Can't test in browsers that don't support creating a DataTransfer
   if (SUPPORTS_DATATRANSFER) {
     it("can clone a filelist", function() {
       const dataTransfer = new DataTransfer();
@@ -46,6 +45,14 @@ describe("files and blobs", function() {
 
       expect(clonedFileList).to.be.deep.equal(fileList);
       expect(clonedFileList).to.be.instanceof(FileList);
+    });
+  } else {
+    it("can not clone a filelist", function() {
+      const input = document.createElement("input");
+      input.type = "file";
+      const fileList = input.files;
+
+      expect(() => structuredClone(fileList)).to.throw();
     });
   }
 

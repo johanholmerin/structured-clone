@@ -16,5 +16,5 @@ const newObj = structuredClone(obj);
 ## Limitations
 
 * `CryptoKey` is not supported, since there is no way to synchronously make a copy.
-* For copying `FileList`, `DataTransfer` is used in browsers that support it and
-  otherwise a normal array is used.
+* Copying `FileList` is only supported in browsers that support the
+  `DataTransfer` constructor.
