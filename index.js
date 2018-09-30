@@ -92,9 +92,9 @@ function cloneObject(obj, set) {
   } else if (SUPPORTS_DOMRECT && obj instanceof DOMRect) {
     set(DOMRect.fromRect(obj));
   } else if (Array.isArray(obj)) {
-    const newObj = [];
+    const newObj = new Array(obj.length);
     set(newObj);
-    obj.forEach(item => newObj.push(clone(item)));
+    obj.forEach((item, index) => (newObj[index] = clone(item)));
   } else if (SUPPORTS_MAP && obj instanceof Map) {
     const newObj = new Map();
     set(newObj);

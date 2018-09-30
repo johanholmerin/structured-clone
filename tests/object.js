@@ -14,6 +14,7 @@ describe("object", function() {
     datedata: new Date(),
     regdata: /a/g,
     arrdata: [1],
+    sparsearray: [, , 3],
     map: new Map([[1, 2]]),
     set: new Set([1])
   };
