@@ -1,6 +1,6 @@
-import structuredClone from '../index.js';
+import structuredClone from "../index.js";
 
-describe('files and blobs', function() {
+describe("files and blobs", function() {
   class CustomFile extends File {}
 
   const SUPPORTS_DATATRANSFER = (() => {
@@ -12,8 +12,8 @@ describe('files and blobs', function() {
     }
   })();
 
-  it('can clone a file', async function() {
-    const file = new File(['content'], 'name');
+  it("can clone a file", async function() {
+    const file = new File(["content"], "name");
     const clonedFile = structuredClone(file);
 
     expect(clonedFile).to.be.deep.equal(file);
@@ -23,8 +23,8 @@ describe('files and blobs', function() {
     );
   });
 
-  it('can clone a blob', async function() {
-    const blob = new Blob(['content']);
+  it("can clone a blob", async function() {
+    const blob = new Blob(["content"]);
     const clonedBlob = structuredClone(blob);
 
     expect(clonedBlob).to.be.deep.equal(blob);
@@ -36,9 +36,9 @@ describe('files and blobs', function() {
 
   // Can't test in browsers that don't support creating a DataTransfer
   if (SUPPORTS_DATATRANSFER) {
-    it('can clone a filelist', function() {
+    it("can clone a filelist", function() {
       const dataTransfer = new DataTransfer();
-      const file = new File(['content'], 'name');
+      const file = new File(["content"], "name");
       dataTransfer.items.add(file);
 
       const fileList = dataTransfer.files;
@@ -49,8 +49,8 @@ describe('files and blobs', function() {
     });
   }
 
-  it('can clone a custom file', async function() {
-    const customFile = new CustomFile(['content'], 'name');
+  it("can clone a custom file", async function() {
+    const customFile = new CustomFile(["content"], "name");
     const clonedCustomFile = structuredClone(customFile);
 
     expect(clonedCustomFile).to.be.deep.equal(customFile);

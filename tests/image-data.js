@@ -1,8 +1,8 @@
-import structuredClone from '../index.js';
+import structuredClone from "../index.js";
 
-describe('image data', function() {
-  it('can clone', function() {
-    const canvas = document.createElement('canvas').getContext('2d');
+describe("image data", function() {
+  it("can clone", function() {
+    const canvas = document.createElement("canvas").getContext("2d");
     const imgData = canvas.createImageData(1, 1);
     const clonedImgData = structuredClone(imgData);
 

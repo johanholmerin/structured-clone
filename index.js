@@ -6,21 +6,21 @@ const SUPPORTS_DATATRANSFER = (() => {
     return false;
   }
 })();
-const SUPPORTS_FILE = typeof File !== 'undefined';
-const SUPPORTS_BLOB = typeof Blob !== 'undefined';
-const SUPPORTS_FILELIST = typeof FileList !== 'undefined';
-const SUPPORTS_ARRAYBUFFER = typeof ArrayBuffer !== 'undefined';
-const SUPPORTS_DATAVIEW = typeof DataView !== 'undefined';
-const SUPPORTS_IMAGEDATA = typeof ImageData !== 'undefined';
-const SUPPORTS_MAP = typeof Map !== 'undefined';
-const SUPPORTS_SET = typeof Set !== 'undefined';
-const SUPPORTS_DOMMATRIX = typeof DOMMatrix !== 'undefined';
-const SUPPORTS_DOMPOINT = typeof DOMPoint !== 'undefined';
-const SUPPORTS_DOMQUAD = typeof DOMQuad !== 'undefined';
-const SUPPORTS_DOMRECT = typeof DOMRect !== 'undefined';
+const SUPPORTS_FILE = typeof File !== "undefined";
+const SUPPORTS_BLOB = typeof Blob !== "undefined";
+const SUPPORTS_FILELIST = typeof FileList !== "undefined";
+const SUPPORTS_ARRAYBUFFER = typeof ArrayBuffer !== "undefined";
+const SUPPORTS_DATAVIEW = typeof DataView !== "undefined";
+const SUPPORTS_IMAGEDATA = typeof ImageData !== "undefined";
+const SUPPORTS_MAP = typeof Map !== "undefined";
+const SUPPORTS_SET = typeof Set !== "undefined";
+const SUPPORTS_DOMMATRIX = typeof DOMMatrix !== "undefined";
+const SUPPORTS_DOMPOINT = typeof DOMPoint !== "undefined";
+const SUPPORTS_DOMQUAD = typeof DOMQuad !== "undefined";
+const SUPPORTS_DOMRECT = typeof DOMRect !== "undefined";
 
 // Primitives types except Symbol
-const PRIMITIVE_TYPES = ['undefined', 'boolean', 'number', 'string'];
+const PRIMITIVE_TYPES = ["undefined", "boolean", "number", "string"];
 
 // For cyclic objects
 const map = new Map();
@@ -124,8 +124,7 @@ function cloneObject(obj, set) {
 function isObject(obj) {
   const proto = Object.getPrototypeOf(obj);
   return (
-    proto === null ||
-    Object.prototype.toString.call(obj) === '[object Object]'
+    proto === null || Object.prototype.toString.call(obj) === "[object Object]"
   );
 }
 

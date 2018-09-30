@@ -1,17 +1,17 @@
 module.exports = config => {
   config.set({
-    frameworks: ['mocha', 'chai'],
-    files: [{ pattern: 'tests/*.js', watched: false }],
+    frameworks: ["mocha", "chai"],
+    files: [{ pattern: "tests/*.js", watched: false }],
     preprocessors: {
-      'tests/*.js': ['rollup']
+      "tests/*.js": ["rollup"]
     },
     rollupPreprocessor: {
       output: {
-        format: 'iife',
-        sourceMap: 'inline'
+        format: "iife",
+        sourceMap: "inline"
       }
     },
-    browsers: ['Chrome', 'Firefox', 'Safari'],
+    browsers: ["Chrome", "Firefox", "Safari"],
     singleRun: true
   });
 };

@@ -1,16 +1,16 @@
-import structuredClone from '../index.js';
+import structuredClone from "../index.js";
 
-describe('object', function() {
+describe("object", function() {
   // From w3c/web-platform-tests
   const origObj = {
     nulldata: null,
     udefdata: window.undefined,
     booldata: true,
     numdata: 1,
-    strdata: 'string data',
+    strdata: "string data",
     boolobj: new Boolean(true),
     numobj: new Number(1),
-    strobj: new String('string data'),
+    strobj: new String("string data"),
     datedata: new Date(),
     regdata: /a/g,
     arrdata: [1],
@@ -22,19 +22,19 @@ describe('object', function() {
 
   let clonedObj;
 
-  it('clones', function() {
+  it("clones", function() {
     expect(() => (clonedObj = structuredClone(origObj))).to.not.throw();
   });
 
-  it('is not equal', function() {
+  it("is not equal", function() {
     expect(clonedObj).to.not.be.equal(origObj);
   });
 
-  it('is deep equal', function() {
+  it("is deep equal", function() {
     expect(clonedObj).to.be.deep.equal(origObj);
   });
 
-  it('does not clone RegExp lastIndex ', function() {
+  it("does not clone RegExp lastIndex ", function() {
     expect(clonedObj.regdata.lastIndex).to.equal(0);
   });
 });
