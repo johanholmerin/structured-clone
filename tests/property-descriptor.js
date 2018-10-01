@@ -1,5 +1,8 @@
 import structuredClone from "../index.js";
 
+const { describe, it } = intern.getPlugin("interface.bdd");
+const { expect } = intern.getPlugin("chai");
+
 describe("property descriptor", function() {
   it("does not clone setters/getters", function() {
     const value = "value";

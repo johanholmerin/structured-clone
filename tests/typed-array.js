@@ -1,5 +1,8 @@
 import structuredClone from "../index.js";
 
+const { describe, it } = intern.getPlugin("interface.bdd");
+const { expect } = intern.getPlugin("chai");
+
 describe("binary data", function() {
   it("can clone a typed array", function() {
     const arr = new Int8Array(2);

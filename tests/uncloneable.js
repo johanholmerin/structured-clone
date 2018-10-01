@@ -1,5 +1,8 @@
 import structuredClone from "../index.js";
 
+const { describe, it } = intern.getPlugin("interface.bdd");
+const { expect } = intern.getPlugin("chai");
+
 describe("uncloneables", function() {
   it("can not clone a Promise", function() {
     expect(() => structuredClone(Promise.resolve())).to.throw();

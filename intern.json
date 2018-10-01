@@ -1,0 +1,18 @@
+{
+  "suites": "./tests/*.js",
+  "coverage": "./index.js",
+  "browser": {
+    "loader": "esm"
+  },
+  "node": {
+    "loader":  "./esm-loader.js"
+  },
+  "instrumenterOptions": {
+    "esModules": true
+  },
+  "configs": {
+    "chrome": {
+      "environments": "chrome"
+    }
+  }
+}

@@ -1,5 +1,8 @@
 import structuredClone from "../index.js";
 
+const { describe, it } = intern.getPlugin("interface.bdd");
+const { expect } = intern.getPlugin("chai");
+
 describe("class", function() {
   class WithProperties {
     constructor() {

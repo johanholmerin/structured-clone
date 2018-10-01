@@ -1,10 +1,13 @@
 import structuredClone from "../index.js";
 
+const { describe, it } = intern.getPlugin("interface.bdd");
+const { expect } = intern.getPlugin("chai");
+
 describe("object", function() {
   // From w3c/web-platform-tests
   const origObj = {
     nulldata: null,
-    udefdata: window.undefined,
+    udefdata: undefined,
     booldata: true,
     numdata: 1,
     strdata: "string data",

@@ -1,6 +1,13 @@
 import structuredClone from "../index.js";
 
+const { describe, it } = intern.getPlugin("interface.bdd");
+const { expect } = intern.getPlugin("chai");
+
 describe("files and blobs", function() {
+  if (typeof File === "undefined") {
+    return;
+  }
+
   class CustomFile extends File {}
 
   const SUPPORTS_DATATRANSFER = (() => {
