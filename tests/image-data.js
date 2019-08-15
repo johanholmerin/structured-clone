@@ -16,4 +16,12 @@ describe("image data", function() {
     expect(clonedImgData).to.be.deep.equal(imgData);
     expect(clonedImgData).to.be.instanceof(ImageData);
   });
+
+  it("copies data", function() {
+    const canvas = document.createElement("canvas").getContext("2d");
+    const imgData = canvas.createImageData(1, 1);
+    const clonedImgData = structuredClone(imgData);
+
+    expect(clonedImgData.data).to.not.be.equal(imgData.data);
+  });
 });

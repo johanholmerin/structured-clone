@@ -51,7 +51,7 @@ function cloneObject(obj, set) {
   } else if (obj instanceof String) {
     set(new String(obj));
   } else if (obj instanceof Boolean) {
-    set(new Boolean(obj));
+    set(new Boolean(obj.valueOf()));
   } else if (obj instanceof Number) {
     set(new Number(obj));
   } else if (obj instanceof RegExp) {
@@ -82,7 +82,7 @@ function cloneObject(obj, set) {
   } else if (SUPPORTS_ARRAYBUFFER && ArrayBuffer.isView(obj)) {
     set(obj.slice());
   } else if (SUPPORTS_IMAGEDATA && obj instanceof ImageData) {
-    set(new ImageData(obj.data, obj.width, obj.height));
+    set(new ImageData(obj.data.slice(0), obj.width, obj.height));
   } else if (SUPPORTS_DOMMATRIX && obj instanceof DOMMatrix) {
     set(obj.scale(1));
   } else if (SUPPORTS_DOMPOINT && obj instanceof DOMPoint) {
@@ -94,7 +94,9 @@ function cloneObject(obj, set) {
   } else if (Array.isArray(obj)) {
     const newObj = new Array(obj.length);
     set(newObj);
-    obj.forEach((item, index) => (newObj[index] = clone(item)));
+    for (const key in obj) {
+      newObj[key] = clone(obj[key]);
+    }
   } else if (SUPPORTS_MAP && obj instanceof Map) {
     const newObj = new Map();
     set(newObj);
