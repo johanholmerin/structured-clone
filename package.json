@@ -3,12 +3,13 @@
   "version": "2.0.1",
   "author": "Johan Holmerin",
   "license": "MIT",
+  "main": "./index.js",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git@github.com:johanholmerin/structured-clone.git"
   },
   "devDependencies": {
-    "esm": "^3.0.84",
     "husky": "^0.14.3",
     "intern": "^4.0.0",
     "prettier": "1.11.1"
