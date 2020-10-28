@@ -18,6 +18,7 @@ const SUPPORTS_DOMMATRIX = typeof DOMMatrix !== "undefined";
 const SUPPORTS_DOMPOINT = typeof DOMPoint !== "undefined";
 const SUPPORTS_DOMQUAD = typeof DOMQuad !== "undefined";
 const SUPPORTS_DOMRECT = typeof DOMRect !== "undefined";
+const SUPPORTS_SHAREDARRAYBUFFER = typeof SharedArrayBuffer !== "undefined";
 
 // Primitives types except Symbol
 const PRIMITIVE_TYPES = ["undefined", "boolean", "number", "string"];
@@ -76,6 +77,8 @@ function cloneObject(obj, set) {
     }
     set(dataTransfer.files);
   } else if (SUPPORTS_ARRAYBUFFER && obj instanceof ArrayBuffer) {
+    set(obj.slice(0));
+  } else if (SUPPORTS_SHAREDARRAYBUFFER && obj instanceof SharedArrayBuffer) {
     set(obj.slice(0));
   } else if (SUPPORTS_DATAVIEW && obj instanceof DataView) {
     set(new DataView(obj.buffer, obj.byteOffset, obj.byteLength));
