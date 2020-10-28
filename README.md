@@ -7,7 +7,7 @@ No external dependencies.
 ## Install
 
 ```sh
- yarn add git+https://github.com/johanholmerin/structured-clone#semver:^2.1.0
+ yarn add git+https://github.com/johanholmerin/structured-clone#semver:^2.2.0
 ```
 
 ## Usage
