@@ -7,13 +7,17 @@ No external dependencies.
 ## Install
 
 ```sh
- yarn add git+https://github.com/johanholmerin/structured-clone#semver:^2.2.0
+# Yarn
+yarn add @johanholmerin/structured-clone
+
+# npm
+npm install @johanholmerin/structured-clone
 ```
 
 ## Usage
 
 ```javascript
-import structuredClone from 'structured-clone';
+import structuredClone from '@johanholmerin/structured-clone';
 
 const newObj = structuredClone(obj);
 ```
