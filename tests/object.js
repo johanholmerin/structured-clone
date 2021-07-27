@@ -12,6 +12,8 @@ describe("object", function() {
     numdata: 1,
     strdata: "string data",
     boolobj: new Boolean(true),
+    bigint: 2345677654321n,
+    bigintobj: Object(-234564324n),
     numobj: new Number(1),
     strobj: new String("string data"),
     datedata: new Date(),

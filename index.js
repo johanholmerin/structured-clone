@@ -19,9 +19,10 @@ const SUPPORTS_DOMPOINT = typeof DOMPoint !== "undefined";
 const SUPPORTS_DOMQUAD = typeof DOMQuad !== "undefined";
 const SUPPORTS_DOMRECT = typeof DOMRect !== "undefined";
 const SUPPORTS_SHAREDARRAYBUFFER = typeof SharedArrayBuffer !== "undefined";
+const SUPPORTS_BIGINT = typeof BigInt !== "undefined";
 
 // Primitives types except Symbol
-const PRIMITIVE_TYPES = ["undefined", "boolean", "number", "string"];
+const PRIMITIVE_TYPES = ["undefined", "boolean", "number", "string", "bigint"];
 
 // For cyclic objects
 const map = new Map();
@@ -57,6 +58,8 @@ function cloneObject(obj, set) {
     set(new Number(obj));
   } else if (obj instanceof RegExp) {
     set(new RegExp(obj));
+  } else if (SUPPORTS_BIGINT && obj instanceof BigInt) {
+    set(Object(obj.valueOf()));
   } else if (SUPPORTS_FILE && obj instanceof File) {
     set(
       new File([obj], obj.name, {
