@@ -5,14 +5,21 @@
     "loader": "esm"
   },
   "node": {
-    "loader":  "./esm-loader.cjs"
+    "loader": "./esm-loader.cjs"
   },
   "instrumenterOptions": {
     "esModules": true
   },
   "configs": {
     "chrome": {
-      "environments": "chrome"
+      "environments": [
+        {
+          "browserName": "chrome",
+          "goog:chromeOptions": {
+            "args": ["--enable-features=SharedArrayBuffer"]
+          }
+        }
+      ]
     }
   }
 }
