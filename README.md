@@ -24,7 +24,8 @@ const newObj = structuredClone(obj);
 
 ## Limitations
 
-* `CryptoKey` and `ImageBitmap` are not supported, since there is no way to
+- `CryptoKey` and `ImageBitmap` are not supported, since there is no way to
   synchronously make a copy.
-* Copying `FileList` is only supported in browsers that support the
+- Copying `FileList` is only supported in browsers that support the
   `DataTransfer` constructor.
+- Does not support the [transfer](https://html.spec.whatwg.org/multipage/structured-data.html#structured-cloning) parameter
