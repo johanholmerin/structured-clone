@@ -1,9 +1,15 @@
 import structuredClone from "../index.js";
 
-const { describe, it } = intern.getPlugin("interface.bdd");
+const { describe, it, before } = intern.getPlugin("interface.bdd");
 const { expect } = intern.getPlugin("chai");
 
 describe("shared array buffer", function() {
+  before(function(suite) {
+    if (typeof SharedArrayBuffer === "undefined") {
+      suite.skip();
+    }
+  });
+
   it("can clone a shared array buffer", function() {
     const buffer = new SharedArrayBuffer(4);
     const clonedBuffer = structuredClone(buffer);
