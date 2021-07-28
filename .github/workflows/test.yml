@@ -28,4 +28,7 @@ jobs:
       run: yarn test
 
     - name: Test Chrome
-      run: yarn test config=@chrome
+      run: yarn test:chrome
+
+    - name: Test Firefox
+      run: yarn test:firefox

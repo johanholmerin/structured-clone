@@ -24,6 +24,16 @@
           }
         }
       ]
+    },
+    "firefox": {
+      "environments": [
+        {
+          "browserName": "firefox",
+          "moz:firefoxOptions": {
+            "args": ["-headless"]
+          }
+        }
+      ]
     }
   }
 }

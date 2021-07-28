@@ -16,6 +16,8 @@
   },
   "scripts": {
     "test": "intern",
+    "test:chrome": "intern config=@chrome",
+    "test:firefox": "intern config=@firefox",
     "lint": "prettier --write {*.js,tests/**/*.js}",
     "precommit": "npm run lint"
   }
