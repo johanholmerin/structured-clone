@@ -20,6 +20,7 @@ const SUPPORTS_DOMQUAD = typeof DOMQuad !== "undefined";
 const SUPPORTS_DOMRECT = typeof DOMRect !== "undefined";
 const SUPPORTS_SHAREDARRAYBUFFER = typeof SharedArrayBuffer !== "undefined";
 const SUPPORTS_BIGINT = typeof BigInt !== "undefined";
+const SUPPORTS_DOMEXCEPTION = typeof DOMException !== "undefined";
 
 // Primitives types except Symbol
 const PRIMITIVE_TYPES = ["undefined", "boolean", "number", "string", "bigint"];
@@ -60,6 +61,20 @@ function cloneObject(obj, set) {
     set(new Number(obj));
   } else if (obj instanceof RegExp) {
     set(new RegExp(obj));
+  } else if (SUPPORTS_DOMEXCEPTION && obj instanceof DOMException) {
+    set(new DOMException(obj.message, obj.name));
+  } else if (obj instanceof Error) {
+    const Constructor = globalThis[obj.name] || Error;
+    const newError = new Constructor();
+    set(newError);
+    if (hasOwn(obj, "message")) {
+      const message = Object.getOwnPropertyDescriptor(obj, "message");
+      if ("value" in message) {
+        newError.message = String(obj.message);
+      }
+    }
+    if ("stack" in obj) newError.stack = clone(obj.stack);
+    if (hasOwn(obj, "cause")) newError.cause = clone(obj.cause);
   } else if (SUPPORTS_BIGINT && obj instanceof BigInt) {
     set(Object(obj.valueOf()));
   } else if (SUPPORTS_FILE && obj instanceof File) {
@@ -124,6 +139,10 @@ function cloneObject(obj, set) {
   } else {
     throw new Error(`Unsupported object ${String(obj)}`);
   }
+}
+
+function hasOwn(obj, name) {
+  return Object.prototype.hasOwnProperty.call(obj, name);
 }
 
 function isObject(obj) {

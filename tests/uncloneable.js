@@ -12,10 +12,6 @@ describe("uncloneables", function() {
     expect(() => structuredClone(function() {})).to.throw();
   });
 
-  it("can not clone a Error", function() {
-    expect(() => structuredClone(new Error())).to.throw();
-  });
-
   it("can not clone a Symbol", function() {
     expect(() => structuredClone(new Symbol())).to.throw();
   });
