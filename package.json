@@ -18,6 +18,7 @@
     "test": "intern",
     "test:chrome": "intern config=@chrome",
     "test:firefox": "intern config=@firefox",
+    "test:safari": "intern config=@safari",
     "lint": "prettier --write {*.js,tests/**/*.js}",
     "precommit": "npm run lint"
   }
