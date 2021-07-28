@@ -1,6 +1,6 @@
 {
   "name": "@johanholmerin/structured-clone",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "author": "Johan Holmerin",
   "license": "MIT",
   "main": "./index.js",
