@@ -24,5 +24,8 @@ jobs:
     - name: Linting
       run: yarn lint
 
-    - name: Tests
+    - name: Test node
       run: yarn test
+
+    - name: Test Chrome
+      run: yarn test config=@chrome
