@@ -16,7 +16,11 @@
         {
           "browserName": "chrome",
           "goog:chromeOptions": {
-            "args": ["--enable-features=SharedArrayBuffer"]
+            "args": [
+              "headless",
+              "disable-gpu",
+              "--enable-features=SharedArrayBuffer"
+            ]
           }
         }
       ]
