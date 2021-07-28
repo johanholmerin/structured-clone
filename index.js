@@ -28,9 +28,11 @@ const PRIMITIVE_TYPES = ["undefined", "boolean", "number", "string", "bigint"];
 const map = new Map();
 
 export default function structuredClone(obj) {
-  const newObj = clone(obj);
-  map.clear();
-  return newObj;
+  try {
+    return clone(obj);
+  } finally {
+    map.clear();
+  }
 }
 
 function clone(obj) {
