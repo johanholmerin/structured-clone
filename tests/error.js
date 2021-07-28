@@ -173,4 +173,29 @@ describe("error", function() {
       expect(clonedError.foo).equal(undefined);
     });
   });
+
+  describe("cause", function() {
+    before(function(suite) {
+      let supportsCause = false;
+      new Error("", {
+        get cause() {
+          supportsCause = true;
+        }
+      });
+      if (!supportsCause) suite.skip();
+    });
+
+    it("clones error cause", function() {
+      const error = new Error("test_error", { cause: new Error("cause") });
+      const clonedError = structuredClone(error);
+
+      expect(clonedError).not.to.equal(error);
+      expect(clonedError.cause).not.to.equal(error.cause);
+      expect(clonedError.cause).to.be.an.instanceOf(Error);
+      expect(clonedError.cause.constructor).to.equal(error.cause.constructor);
+      expect(clonedError.cause.message).to.equal(error.cause.message);
+      expect(clonedError.cause.name).to.equal(error.cause.name);
+      expect(clonedError.cause.stack).to.equal(error.cause.stack);
+    });
+  });
 });
